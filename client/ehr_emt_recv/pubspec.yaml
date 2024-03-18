@@ -1,0 +1,29 @@
+name: ehr_emt_recv
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: ">=3.2.6 <4.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  get: 4.6.6
+  animate_do: 3.3.3
+  firebase_auth: 4.17.4
+
+  firebase: 9.0.3
+  auth: 8.2.0+2
+  firebase_core: 2.25.4
+  flutter:
+    sdk: flutter
+  socket_io_client: ^2.0.3+1
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  assets:
+    - assets/
+  uses-material-design: true

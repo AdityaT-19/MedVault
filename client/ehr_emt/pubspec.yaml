@@ -1,0 +1,29 @@
+name: ehr_emt
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: ">=3.2.6 <4.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  get: 4.6.6
+  firebase_core: 2.25.4
+  animate_do: 3.3.3
+  speech_to_text: 6.6.0
+  firebase_auth: 4.17.4
+  flutter:
+    sdk: flutter
+  flutter_barcode_scanner: ^2.0.0
+  barcode_scan2: ^4.3.0
+  socket_io_client: ^2.0.3+1
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  assets:
+    - assets/
+  uses-material-design: true
