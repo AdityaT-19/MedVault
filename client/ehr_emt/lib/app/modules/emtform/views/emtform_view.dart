@@ -28,9 +28,8 @@ class EmtformView extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'EMT Form',
-          style: TextStyle(color: Get.theme.colorScheme.background),
         ),
-        backgroundColor: Get.theme.colorScheme.primary,
+        backgroundColor: Get.theme.colorScheme.primaryContainer,
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -42,8 +41,15 @@ class EmtformView extends StatelessWidget {
               child: Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Medico Legal Case'),
+                      const Text(
+                        'Medico Legal Case',
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                       Checkbox(
                         value: emtController.isMedicoLegalCase.value,
                         onChanged: (value) {
@@ -52,63 +58,64 @@ class EmtformView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'UID',
-                      hintText: 'Enter Patient UID',
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        labelText: 'UID',
+                        hintText: 'Enter Patient UID',
+                      ),
+                      onChanged: (value) => emtController.setUid(value),
+                      validator: (value) => emtController.validateUID(
+                        value,
+                      ),
+                      controller: uidController,
                     ),
-                    onChanged: (value) => emtController.setUid(value),
-                    validator: (value) => emtController.validateUID(
-                      value,
-                    ),
-                    controller: uidController,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  // TextFormField(
-                  //   decoration: const InputDecoration(
-                  //     labelText: 'Enter Reciever ID',
-                  //     hintText: 'Enter the ID of the Reciever',
-                  //   ),
-                  //   onChanged: (value) => emtController.setUid(value),
-                  //   validator: (value) => emtController.validateUID(
-                  //     value,
-                  //   ),
-                  // ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Emergency Type',
-                      hintText: 'Enter the type of Emergency',
-                      suffixIcon: IconButton(
-                          icon: const Icon(Icons.mic),
-                          onPressed: () {
-                            String? val = emtController.toggleListening();
-                            print(val);
-                            if (val != null) {
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Emergency Type',
+                        hintText: 'Enter the type of Emergency',
+                        suffixIcon: IconButton(
+                            icon: const Icon(Icons.mic),
+                            onPressed: () {
+                              String? val = emtController.toggleListening();
                               print(val);
-                              emtController.setEmergencyType(val);
-                            }
-                          }),
+                              if (val != null) {
+                                print(val);
+                                emtController.setEmergencyType(val);
+                              }
+                            }),
+                      ),
+                      validator: (value) =>
+                          emtController.validateEmergencyType(value),
+                      onChanged: (value) =>
+                          emtController.setEmergencyType(value),
                     ),
-                    validator: (value) =>
-                        emtController.validateEmergencyType(value),
-                    onChanged: (value) => emtController.setEmergencyType(value),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text('Triage Level'),
+                  const Text(
+                    'Triage Level',
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
                   Obx(
                     () => DropdownButton(
+                      padding: EdgeInsets.all(8),
                       value: emtController.triageLevel.value,
                       items: [
                         DropdownMenuItem(
                           value: Colors.red,
                           child: Container(
+                            padding: EdgeInsets.all(8),
                             color: Colors.red,
                             child: const SizedBox(
                               child: Center(child: Text('Red')),
@@ -141,88 +148,109 @@ class EmtformView extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Description',
-                      hintText:
-                          'Enter the description of the patient condition',
-                      suffixIcon: IconButton(
-                          icon: const Icon(Icons.mic),
-                          onPressed: () {
-                            String? val = emtController.toggleListening();
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Description',
+                        hintText:
+                            'Enter the description of the patient condition',
+                        suffixIcon: IconButton(
+                            icon: const Icon(Icons.mic),
+                            onPressed: () {
+                              String? val = emtController.toggleListening();
 
-                            if (val != null) {
-                              emtController.setDescription(val);
-                            }
-                          }),
-                    ),
-                    onChanged: (value) => emtController.setDescription(value),
-                    validator: emtController.validateDescription,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'BP',
-                      hintText: 'Enter the BP of the Patient',
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.mic),
-                        onPressed: () {
-                          String? val = emtController.toggleListening();
-
-                          if (val != null) {
-                            emtController.setBp(val);
-                          }
-                        },
+                              if (val != null) {
+                                emtController.setDescription(val);
+                              }
+                            }),
                       ),
+                      onChanged: (value) => emtController.setDescription(value),
+                      validator: emtController.validateDescription,
                     ),
-                    onChanged: (value) => emtController.setBp(value),
-                    validator: (value) => emtController.validateBP(value),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'sPO2',
-                      hintText: 'Enter the sPO2 of the Patient',
-                      suffixIcon: IconButton(
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'BP',
+                        hintText: 'Enter the BP of the Patient',
+                        suffixIcon: IconButton(
                           icon: const Icon(Icons.mic),
                           onPressed: () {
                             String? val = emtController.toggleListening();
 
                             if (val != null) {
-                              emtController.setSpo2(val);
+                              emtController.setBp(val);
                             }
-                          }),
+                          },
+                        ),
+                      ),
+                      onChanged: (value) => emtController.setBp(value),
+                      validator: (value) => emtController.validateBP(value),
                     ),
-                    onChanged: (value) => emtController.setSpo2(value),
-                    validator: (value) => emtController.validateSpO2(value),
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Pulse Rate',
-                      hintText: 'Enter the Pulse Rate of the Patient',
-                      suffixIcon: IconButton(
-                          icon: const Icon(Icons.mic),
-                          onPressed: () {
-                            String? val = emtController.toggleListening();
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'sPO2',
+                        hintText: 'Enter the sPO2 of the Patient',
+                        suffixIcon: IconButton(
+                            icon: const Icon(Icons.mic),
+                            onPressed: () {
+                              String? val = emtController.toggleListening();
 
-                            if (val != null) {
-                              emtController.setPulseRate(val);
-                            }
-                          }),
+                              if (val != null) {
+                                emtController.setSpo2(val);
+                              }
+                            }),
+                      ),
+                      onChanged: (value) => emtController.setSpo2(value),
+                      validator: (value) => emtController.validateSpO2(value),
                     ),
-                    onChanged: (value) => emtController.setPulseRate(value),
-                    validator: (value) =>
-                        emtController.validatePulseRate(value),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Pulse Rate',
+                        hintText: 'Enter the Pulse Rate of the Patient',
+                        suffixIcon: IconButton(
+                            icon: const Icon(Icons.mic),
+                            onPressed: () {
+                              String? val = emtController.toggleListening();
+
+                              if (val != null) {
+                                emtController.setPulseRate(val);
+                              }
+                            }),
+                      ),
+                      onChanged: (value) => emtController.setPulseRate(value),
+                      validator: (value) =>
+                          emtController.validatePulseRate(value),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                   ElevatedButton(
                     onPressed: () {
                       emtController.submitForm();
                     },
-                    child: const Text('Save'),
+                    child: const Text(
+                      'Send',
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ),
                 ],
               ),

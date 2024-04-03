@@ -36,6 +36,7 @@ class DashboardView extends StatelessWidget {
       child: Scaffold(
           appBar: AppBar(
             title: const Text('Dashboard'),
+            backgroundColor: Get.theme.colorScheme.primaryContainer,
             actions: [
               IconButton(
                 icon: Icon(Icons.perm_identity_outlined),

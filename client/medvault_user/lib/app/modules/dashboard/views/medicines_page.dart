@@ -1,5 +1,6 @@
 import 'package:ehr_user/app/models/user.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MedicinesPage extends StatelessWidget {
   final List<Medicine> medicines;
@@ -10,9 +11,16 @@ class MedicinesPage extends StatelessWidget {
       itemCount: medicines.length,
       itemBuilder: (context, index) {
         final medicine = medicines[index];
-        return ListTile(
-          title: Text(medicine.name),
-          subtitle: Text(medicine.dosage),
+        return Container(
+          padding: const EdgeInsets.all(8),
+          child: ListTile(
+            tileColor: Get.theme.colorScheme.tertiaryContainer,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            title: Text(medicine.name),
+            subtitle: Text(medicine.dosage),
+          ),
         );
       },
     );

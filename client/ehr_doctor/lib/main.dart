@@ -5,8 +5,8 @@ import 'app/routes/app_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-const kColorScheme = Color.fromRGBO(143, 148, 251, 1);
-const kDarkScheme = Color.fromARGB(153, 149, 154, 247);
+const kColorScheme = Color.fromRGBO(22, 253, 145, 1);
+const kDarkScheme = Color.fromARGB(174, 8, 252, 93);
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
