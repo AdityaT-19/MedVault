@@ -28,7 +28,7 @@ class EmtformController extends GetxController {
   @override
   void onInit() {
     socket = IO.io(
-      '${URL.SOCKET_URL}:${URL.SOCKET_PORT}',
+      '${URL.SOCKET_URL}',
       IO.OptionBuilder()
           .setTransports(['websocket'])
           .disableAutoConnect()
