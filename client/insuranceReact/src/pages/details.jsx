@@ -9,7 +9,7 @@ const InsuranceDetailsPage = () => {
     const { id } = useParams();
     const fetchInsuranceDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/insurance/${id}`);
+        const response = await fetch(`https://medvault-yzpz.onrender.com/insurance/${id}`);
         const data = await response.json();
         setInsuranceDetails(data);
       } catch (error) {

@@ -10,7 +10,7 @@ const InsuranceLogin = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/insurance/signin', {
+      const response = await fetch('https://medvault-yzpz.onrender.com/insurance/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

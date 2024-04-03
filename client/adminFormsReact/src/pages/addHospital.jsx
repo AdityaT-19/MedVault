@@ -16,7 +16,7 @@ const AddHospital = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/hospital/signup', {
+      const response = await fetch('https://medvault-yzpz.onrender.com/hospital/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

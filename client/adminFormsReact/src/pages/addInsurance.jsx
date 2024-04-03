@@ -66,7 +66,7 @@ const InsuranceDetailsForm = () => {
     const companyId = 'your_company_id'; // Replace with the actual company id
     
     try {
-      const response = await fetch(`http://localhost:3000/insurance/add/${companyId}`, {
+      const response = await fetch(`https://medvault-yzpz.onrender.com/insurance/add/${companyId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
