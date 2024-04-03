@@ -93,7 +93,7 @@ class HomeView extends GetView<HomeController> {
                         Get.toNamed('/qrscan_view');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Get.theme.colorScheme.primary,
+                        backgroundColor: Get.theme.colorScheme.primaryContainer,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 50,
                           vertical: 15,
@@ -105,7 +105,7 @@ class HomeView extends GetView<HomeController> {
                       child: Text(
                         "SOS !!!",
                         style: TextStyle(
-                          color: Get.theme.colorScheme.background,
+                          color: Colors.black,
                           fontSize: 20,
                         ),
                       ),

@@ -11,6 +11,7 @@ class QrCodePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('QR Code Scanner'),
+        backgroundColor: Get.theme.colorScheme.primaryContainer,
       ),
       body: Center(
         child: Column(
