@@ -87,7 +87,7 @@ class HomeView extends GetView<HomeController> {
                     duration: const Duration(milliseconds: 1900),
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.toNamed('/login');
+                        Get.toNamed('/splash');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Get.theme.colorScheme.primary,

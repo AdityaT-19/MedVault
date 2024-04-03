@@ -47,7 +47,7 @@ const AddEMT = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/emt/signup', {
+      const response = await fetch('https://medvault-yzpz.onrender.com/emt/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -23,8 +23,8 @@ class _SplashScreenState extends State<SplashScreen> {
         final authController = Get.put(LoginController(), permanent: true);
         final uid = user.uid;
         debugPrint(uid);
-        final response = await http.get(
-            Uri.parse('${URL.REG_URL}:${URL.REG_PORT}/user/getDetails/$uid'));
+        final response =
+            await http.get(Uri.parse('${URL.REG_URL}/user/getDetails/$uid'));
         debugPrint(response.body);
         final pat =
             Patient.fromJson(jsonDecode(response.body) as Map<String, dynamic>);

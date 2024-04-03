@@ -16,7 +16,7 @@ const AddInsuranceCompany = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/insurance/signup', {
+      const response = await fetch('https://medvault-yzpz.onrender.com/insurance/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

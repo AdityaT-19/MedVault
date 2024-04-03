@@ -20,7 +20,7 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     debugPrint('initState');
     client = IO.io(
-        '${URL.SOCKET_URL}:${URL.SOCKET_PORT}',
+        '${URL.SOCKET_URL}',
         IO.OptionBuilder()
             .setTransports(['websocket'])
             .disableAutoConnect()

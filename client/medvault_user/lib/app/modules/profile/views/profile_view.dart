@@ -13,6 +13,7 @@ class ProfileView extends GetView<ProfileController> {
     return Scaffold(
       appBar: AppBar(
         title: Text('User Profile'),
+        backgroundColor: Get.theme.colorScheme.primaryContainer,
         actions: [
           IconButton(
             icon: Icon(Icons.logout),
@@ -24,11 +25,14 @@ class ProfileView extends GetView<ProfileController> {
       ),
       body: ListView(
         children: [
+          SizedBox(
+            height: 20,
+          ),
           InkWell(
             child: Container(
               alignment: Alignment.center,
               child: CircleAvatar(
-                radius: 50,
+                radius: 100,
                 backgroundColor: Colors.transparent,
                 child: ClipOval(
                   child: patient.profileImage != null
@@ -45,13 +49,12 @@ class ProfileView extends GetView<ProfileController> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.numbers,
-                      color: Get.theme.colorScheme.background),
+                  leading: Icon(Icons.numbers, color: Colors.black),
                   title: Text("UID", style: TextStyle(color: Colors.black)),
                 ),
                 Text(
@@ -59,7 +62,7 @@ class ProfileView extends GetView<ProfileController> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 15),
                 ),
                 const SizedBox(
                   height: 10,
@@ -71,13 +74,13 @@ class ProfileView extends GetView<ProfileController> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.perm_identity_outlined,
-                      color: Get.theme.colorScheme.background),
+                  leading:
+                      Icon(Icons.perm_identity_outlined, color: Colors.black),
                   title: Text("Name", style: TextStyle(color: Colors.black)),
                 ),
                 Text(
@@ -85,7 +88,7 @@ class ProfileView extends GetView<ProfileController> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -97,13 +100,12 @@ class ProfileView extends GetView<ProfileController> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.perm_identity,
-                      color: Get.theme.colorScheme.background),
+                  leading: Icon(Icons.perm_identity, color: Colors.black),
                   title: Text("Age", style: TextStyle(color: Colors.black)),
                 ),
                 Text(
@@ -111,7 +113,7 @@ class ProfileView extends GetView<ProfileController> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -123,13 +125,12 @@ class ProfileView extends GetView<ProfileController> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
                 ListTile(
-                  leading:
-                      Icon(Icons.call, color: Get.theme.colorScheme.background),
+                  leading: Icon(Icons.call, color: Colors.black),
                   title:
                       Text("Phone No", style: TextStyle(color: Colors.black)),
                 ),
@@ -138,7 +139,7 @@ class ProfileView extends GetView<ProfileController> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -150,13 +151,12 @@ class ProfileView extends GetView<ProfileController> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.bloodtype_outlined,
-                      color: Get.theme.colorScheme.background),
+                  leading: Icon(Icons.bloodtype_outlined, color: Colors.black),
                   title: Text("Blood Group",
                       style: TextStyle(color: Colors.black)),
                 ),
@@ -165,7 +165,7 @@ class ProfileView extends GetView<ProfileController> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -177,13 +177,12 @@ class ProfileView extends GetView<ProfileController> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.email_outlined,
-                      color: Get.theme.colorScheme.background),
+                  leading: Icon(Icons.email_outlined, color: Colors.black),
                   title:
                       Text("Email ID", style: TextStyle(color: Colors.black)),
                 ),
@@ -192,7 +191,7 @@ class ProfileView extends GetView<ProfileController> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -204,13 +203,12 @@ class ProfileView extends GetView<ProfileController> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.fingerprint,
-                      color: Get.theme.colorScheme.background),
+                  leading: Icon(Icons.fingerprint, color: Colors.black),
                   title: Text("Aadhar Number",
                       style: TextStyle(color: Colors.black)),
                 ),
@@ -219,7 +217,7 @@ class ProfileView extends GetView<ProfileController> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -231,13 +229,12 @@ class ProfileView extends GetView<ProfileController> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
                 ListTile(
-                  leading:
-                      Icon(Icons.home, color: Get.theme.colorScheme.background),
+                  leading: Icon(Icons.home, color: Colors.black),
                   title: Text("Insurance Policy Number",
                       style: TextStyle(color: Colors.black)),
                 ),
@@ -246,7 +243,7 @@ class ProfileView extends GetView<ProfileController> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,

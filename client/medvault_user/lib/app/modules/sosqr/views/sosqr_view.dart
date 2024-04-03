@@ -15,6 +15,7 @@ class SosqrView extends GetView<SosqrController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Emergency!!'),
+        backgroundColor: Get.theme.colorScheme.primaryContainer,
         centerTitle: true,
       ),
       body: Column(

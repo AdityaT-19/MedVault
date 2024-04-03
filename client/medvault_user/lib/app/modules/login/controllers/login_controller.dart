@@ -16,8 +16,8 @@ class LoginController extends GetxController {
   void onInit() async {
     FirebaseAuth.instance.authStateChanges().listen((event) async {
       if (event != null) {
-        final response = await http.get(Uri.parse(
-            '${URL.REG_URL}:${URL.REG_PORT}/user/getDetails/${event.uid}'));
+        final response = await http
+            .get(Uri.parse('${URL.REG_URL}/user/getDetails/${event.uid}'));
         print(response.body);
         print(jsonDecode(response.body));
         final user =

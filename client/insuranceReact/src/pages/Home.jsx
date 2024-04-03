@@ -58,7 +58,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/insurance/${id}`);
+        const response = await fetch(`https://medvault-yzpz.onrender.com/insurance/${id}`);
         const data = await response.json();
         setDetails(data);
       } catch (error) {
