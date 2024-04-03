@@ -10,10 +10,10 @@ class DashboardView extends GetView<DashboardController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Get.theme.colorScheme.primary,
+        backgroundColor: Get.theme.colorScheme.primaryContainer,
         title: Text(
           'Dashboard',
-          style: TextStyle(color: Get.theme.colorScheme.background),
+          style: TextStyle(color: Get.theme.colorScheme.tertiary),
         ),
         centerTitle: true,
       ),

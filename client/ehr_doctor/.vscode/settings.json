@@ -1,5 +1,5 @@
 {
   "java.compile.nullAnalysis.mode": "automatic",
   "java.configuration.updateBuildConfiguration": "interactive",
-  "cmake.sourceDirectory": "C:/Users/tecra/Dropbox/PC/Desktop/EHR/ehr_doctor/linux"
+  "cmake.sourceDirectory": "C:/Users/tecra/Dropbox/PC/Desktop/Medvault/MedVault/client/ehr_doctor/linux/flutter"
 }

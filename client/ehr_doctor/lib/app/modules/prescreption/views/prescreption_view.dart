@@ -25,9 +25,9 @@ class PrescreptionView extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Prescription',
-          style: TextStyle(color: Get.theme.colorScheme.background),
+          style: TextStyle(color: Get.theme.colorScheme.tertiary),
         ),
-        backgroundColor: Get.theme.colorScheme.primary,
+        backgroundColor: Get.theme.colorScheme.primaryContainer,
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -37,121 +37,142 @@ class PrescreptionView extends StatelessWidget {
             child: Form(
               child: Column(
                 children: [
-                  TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'UID',
-                        hintText: 'Enter Patient UID',
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'UID',
+                          hintText: 'Enter Patient UID',
+                        ),
+                        onChanged: (value) =>
+                            prescreptionController.setUid(value),
+                        validator: (value) =>
+                            prescreptionController.validateUID(
+                              value,
+                            )),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Health Issues',
+                        hintText: 'Enter the health issues of the patient',
+                        suffixIcon: IconButton(
+                            icon: Icon(Icons.mic),
+                            onPressed: () {
+                              String? val =
+                                  prescreptionController.toggleListening();
+                              print(val);
+                              if (val != null) {
+                                print(val);
+                                prescreptionController.setHealthIssues(val);
+                              }
+                            }),
+                      ),
+                      validator: (value) =>
+                          prescreptionController.validateHealthIssues(value),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Suspected Disease',
+                        hintText: 'Enter the suspected diseases of the patient',
+                        suffixIcon: IconButton(
+                            icon: Icon(Icons.mic),
+                            onPressed: () {
+                              String? val =
+                                  prescreptionController.toggleListening();
+
+                              if (val != null) {
+                                prescreptionController.setSuspectedDisease(val);
+                              }
+                            }),
+                      ),
+                      validator: (value) => prescreptionController
+                          .validateSuspectedDisease(value),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Investigation',
+                        hintText: 'Mention the Tests to be performed',
+                        suffixIcon: IconButton(
+                            icon: Icon(Icons.mic),
+                            onPressed: () {
+                              String? val =
+                                  prescreptionController.toggleListening();
+
+                              if (val != null) {
+                                prescreptionController.setInvestigation(val);
+                              }
+                            }),
                       ),
                       onChanged: (value) =>
-                          prescreptionController.setUid(value),
-                      validator: (value) => prescreptionController.validateUID(
-                            value,
-                          )),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Health Issues',
-                      hintText: 'Enter the health issues of the patient',
-                      suffixIcon: IconButton(
-                          icon: Icon(Icons.mic),
-                          onPressed: () {
-                            String? val =
-                                prescreptionController.toggleListening();
-                            print(val);
-                            if (val != null) {
-                              print(val);
-                              prescreptionController.setHealthIssues(val);
-                            }
-                          }),
+                          prescreptionController.setInvestigation(value),
                     ),
-                    validator: (value) =>
-                        prescreptionController.validateHealthIssues(value),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Suspected Disease',
-                      hintText: 'Enter the suspected diseases of the patient',
-                      suffixIcon: IconButton(
-                          icon: Icon(Icons.mic),
-                          onPressed: () {
-                            String? val =
-                                prescreptionController.toggleListening();
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Required Treatments',
+                        hintText:
+                            'Enter the treatments required for the patient',
+                        suffixIcon: IconButton(
+                            icon: Icon(Icons.mic),
+                            onPressed: () {
+                              String? val =
+                                  prescreptionController.toggleListening();
 
-                            if (val != null) {
-                              prescreptionController.setSuspectedDisease(val);
-                            }
-                          }),
+                              if (val != null) {
+                                prescreptionController
+                                    .setRequiredTreatments(val);
+                              }
+                            }),
+                      ),
+                      validator: (value) =>
+                          prescreptionController.validateTreatment(value),
                     ),
-                    validator: (value) =>
-                        prescreptionController.validateSuspectedDisease(value),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Investigation',
-                      hintText: 'Mention the Tests to be performed',
-                      suffixIcon: IconButton(
-                          icon: Icon(Icons.mic),
-                          onPressed: () {
-                            String? val =
-                                prescreptionController.toggleListening();
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Medication',
+                        hintText: 'Enter the Medications of the Patient',
+                        suffixIcon: IconButton(
+                            icon: const Icon(Icons.mic),
+                            onPressed: () {
+                              String? val =
+                                  prescreptionController.toggleListening();
 
-                            if (val != null) {
-                              prescreptionController.setInvestigation(val);
-                            }
-                          }),
+                              if (val != null) {
+                                prescreptionController.setMedications(val);
+                              }
+                            }),
+                      ),
+                      onChanged: (value) =>
+                          prescreptionController.setMedications(value),
                     ),
-                    onChanged: (value) =>
-                        prescreptionController.setInvestigation(value),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Required Treatments',
-                      hintText: 'Enter the treatments required for the patient',
-                      suffixIcon: IconButton(
-                          icon: Icon(Icons.mic),
-                          onPressed: () {
-                            String? val =
-                                prescreptionController.toggleListening();
-
-                            if (val != null) {
-                              prescreptionController.setRequiredTreatments(val);
-                            }
-                          }),
-                    ),
-                    validator: (value) =>
-                        prescreptionController.validateTreatment(value),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Medication',
-                      hintText: 'Enter the Medications of the Patient',
-                      suffixIcon: IconButton(
-                          icon: const Icon(Icons.mic),
-                          onPressed: () {
-                            String? val =
-                                prescreptionController.toggleListening();
-
-                            if (val != null) {
-                              prescreptionController.setMedications(val);
-                            }
-                          }),
-                    ),
-                    onChanged: (value) =>
-                        prescreptionController.setMedications(value),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -200,7 +221,10 @@ class PrescreptionView extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: const Text('Save'),
+                    child: const Text(
+                      'Save',
+                      style: TextStyle(fontSize: 15),
+                    ),
                   ),
                 ],
               ),
