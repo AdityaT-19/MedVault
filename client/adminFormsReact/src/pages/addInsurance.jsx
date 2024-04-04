@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { TextField, Button, Container, Card, Grid, InputAdornment } from '@mui/material';
+import { Add as AddIcon } from '@mui/icons-material';
 
 const InsuranceDetailsForm = () => {
   const [formData, setFormData] = useState({
@@ -67,59 +69,108 @@ const InsuranceDetailsForm = () => {
   };
 
   return (
-    <div className="form-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <div style={{ boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', padding: '20px', borderRadius: '8px', width: '400px' }}>
+    <Container maxWidth="sm" style={{ marginTop: '50px' }}>
+      <Card sx={{ p: 4 }}>
         <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#333' }}>Insurance Details</h2>
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Insurance Policy No:</span>
-            <input type="text" name="insurance_policy_no" value={formData.insurance_policy_no} onChange={(e) => handleChange(e)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
-
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Patient UUID:</span>
-            <input type="text" name="patient_uuid" value={formData.patient_uuid} onChange={(e) => handleChange(e)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
-
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Insurance Policy Name:</span>
-            <input type="text" name="insurance_policy_name" value={formData.insurance_policy_name} onChange={(e) => handleChange(e)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
-
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Sum Assured:</span>
-            <input type="number" name="sum_assured" value={formData.sum_assured} onChange={(e) => handleChange(e)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
-
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Number of Premiums:</span>
-            <input type="number" name="number_of_premiums" value={formData.number_of_premiums} onChange={(e) => handleChange(e)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
-
+          <TextField
+            label="Insurance Policy No"
+            variant="outlined"
+            fullWidth
+            name="insurance_policy_no"
+            value={formData.insurance_policy_no}
+            onChange={(e) => handleChange(e)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  #
+                </InputAdornment>
+              ),
+            }}
+          />
+          <TextField
+            label="Patient UUID"
+            variant="outlined"
+            fullWidth
+            name="patient_uuid"
+            value={formData.patient_uuid}
+            onChange={(e) => handleChange(e)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  #
+                </InputAdornment>
+              ),
+            }}
+          />
+          <TextField
+            label="Insurance Policy Name"
+            variant="outlined"
+            fullWidth
+            name="insurance_policy_name"
+            value={formData.insurance_policy_name}
+            onChange={(e) => handleChange(e)}
+          />
+          <TextField
+            label="Sum Assured"
+            variant="outlined"
+            fullWidth
+            type="number"
+            name="sum_assured"
+            value={formData.sum_assured}
+            onChange={(e) => handleChange(e)}
+          />
+          <TextField
+            label="Number of Premiums"
+            variant="outlined"
+            fullWidth
+            type="number"
+            name="number_of_premiums"
+            value={formData.number_of_premiums}
+            onChange={(e) => handleChange(e)}
+          />
           <h2>Nominee Details</h2>
-
           {formData.nominee_details.map((nominee, index) => (
             <div key={index} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
-              <label>
-                Nominee Name:
-                <input type="text" name="nominee_name" value={nominee.nominee_name} onChange={(e) => handleChange(e, index)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-              </label>
-
-              <label>
-                Nominee Relationship:
-                <input type="text" name="nominee_relationship" value={nominee.nominee_relationship} onChange={(e) => handleChange(e, index)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-              </label>
+              <TextField
+                label="Nominee Name"
+                variant="outlined"
+                fullWidth
+                name="nominee_name"
+                value={nominee.nominee_name}
+                onChange={(e) => handleChange(e, index)}
+              />
+              <TextField
+                label="Nominee Relationship"
+                variant="outlined"
+                fullWidth
+                name="nominee_relationship"
+                value={nominee.nominee_relationship}
+                onChange={(e) => handleChange(e, index)}
+              />
             </div>
           ))}
-
-          <button type="button" onClick={addNominee} style={{ padding: '10px', backgroundColor: '#007BFF', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', marginBottom: '10px' }}>Add Nominee</button>
-
-          <button type="submit" style={{ padding: '10px', backgroundColor: '#28A745', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Submit</button>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<AddIcon />}
+            onClick={addNominee}
+          >
+            Add Nominee
+          </Button>
+          <Button
+            type="submit"
+            variant="contained"
+            color="success"
+          >
+            Submit
+          </Button>
         </form>
-      </div>
-    </div>
+      </Card>
+    </Container>
   );
 };
 
 export default InsuranceDetailsForm;
+
 

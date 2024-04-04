@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { TextField, Button, Container, Card, Grid, InputAdornment } from '@mui/material';
+import { AccountCircle, Business, Person, PeopleAlt, Cake, Wc, Work } from '@mui/icons-material';
 
 const AddDoctor = () => {
   const [formData, setFormData] = useState({
@@ -45,51 +47,136 @@ const AddDoctor = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="card shadow p-4" style={{ maxWidth: '400px', margin: '0 auto' }}>
-        <h2 className="text-center mb-4">Add Doctor</h2>
+    <Container maxWidth="sm" style={{ marginTop: '50px' }}>
+      <Card sx={{ p: 4 }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Add Doctor</h2>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="hospital_id" className="form-label">Hospital ID:</label>
-            <input type="text" className="form-control" id="hospital_id" name="hospital_id" value={formData.hospital_id} onChange={handleChange} />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="doctor_name" className="form-label">Doctor Name:</label>
-            <input type="text" className="form-control" id="doctor_name" name="doctor_name" value={formData.doctor_name} onChange={handleChange} />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="age" className="form-label">Age:</label>
-            <input type="number" className="form-control" id="age" name="age" value={formData.age} onChange={handleChange} />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="sex" className="form-label">Sex:</label>
-            <input type="text" className="form-control" id="sex" name="sex" value={formData.sex} onChange={handleChange} />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="speciality" className="form-label">Speciality:</label>
-            <input type="text" className="form-control" id="speciality" name="speciality" value={formData.speciality} onChange={handleChange} />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="department" className="form-label">Department:</label>
-            <input type="text" className="form-control" id="department" name="department" value={formData.department} onChange={handleChange} />
-          </div>
-
-          <div className="d-grid gap-2">
-            <button type="submit" className="btn btn-success btn-lg">Submit</button>
-          </div>
+          <Grid container spacing={2} justifyContent="center">
+            <Grid item xs={12}>
+              <TextField
+                label="Hospital ID"
+                variant="outlined"
+                fullWidth
+                name="hospital_id"
+                value={formData.hospital_id}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Business />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Doctor Name"
+                variant="outlined"
+                fullWidth
+                name="doctor_name"
+                value={formData.doctor_name}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Person />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Age"
+                variant="outlined"
+                fullWidth
+                type="number"
+                name="age"
+                value={formData.age}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Cake />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Sex"
+                variant="outlined"
+                fullWidth
+                name="sex"
+                value={formData.sex}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Wc />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Speciality"
+                variant="outlined"
+                fullWidth
+                name="speciality"
+                value={formData.speciality}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Work />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Department"
+                variant="outlined"
+                fullWidth
+                name="department"
+                value={formData.department}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PeopleAlt />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="large"
+                fullWidth
+              >
+                Submit
+              </Button>
+            </Grid>
+          </Grid>
         </form>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl pauseOnFocusLoss draggable pauseOnHover />
-      </div>
-    </div>
+      </Card>
+    </Container>
   );
 };
 
 export default AddDoctor;
+
+
 
 
 

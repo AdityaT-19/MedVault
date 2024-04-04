@@ -59,6 +59,7 @@ class _DashboardState extends State<Dashboard> {
             icon: const Icon(Icons.logout),
           ),
         ],
+        backgroundColor: Get.theme.colorScheme.primaryContainer,
       ),
       body: Center(
         child: Column(

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { TextField, Button, Container, Card, Grid, InputAdornment } from '@mui/material';
+import { AddCircleOutline as AddCircleOutlineIcon, AccountCircle, Email, Phone } from '@mui/icons-material';
 
 const AddEMT = () => {
   const [formData, setFormData] = useState({
@@ -43,37 +45,98 @@ const AddEMT = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="card shadow p-4" style={{ maxWidth: '400px', margin: '0 auto' }}>
-        <h2 className="text-center mb-4">Add EMT</h2>
+    <Container maxWidth="sm" style={{ marginTop: '50px' }}>
+      <Card sx={{ p: 4 }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Add EMT</h2>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="hospital_id" className="form-label">Hospital ID:</label>
-            <input type="text" className="form-control" id="hospital_id" name="hospital_id" value={formData.hospital_id} onChange={handleChange} />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="emt_name" className="form-label">EMT Name:</label>
-            <input type="text" className="form-control" id="emt_name" name="emt_name" value={formData.emt_name} onChange={handleChange} />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="emt_email" className="form-label">EMT Email:</label>
-            <input type="text" className="form-control" id="emt_email" name="emt_email" value={formData.emt_email} onChange={handleChange} />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="emt_phone_no" className="form-label">EMT Phone Number:</label>
-            <input type="text" className="form-control" id="emt_phone_no" name="emt_phone_no" value={formData.emt_phone_no} onChange={handleChange} />
-          </div>
-
-          <div className="d-grid gap-2">
-            <button type="submit" className="btn btn-success btn-lg">Submit</button>
-          </div>
+          <Grid container spacing={2} justifyContent="center">
+            <Grid item xs={12}>
+              <TextField
+                label="Hospital ID"
+                variant="outlined"
+                fullWidth
+                name="hospital_id"
+                value={formData.hospital_id}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountCircle />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="EMT Name"
+                variant="outlined"
+                fullWidth
+                name="emt_name"
+                value={formData.emt_name}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountCircle />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="EMT Email"
+                variant="outlined"
+                fullWidth
+                name="emt_email"
+                type="email"
+                value={formData.emt_email}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Email />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="EMT Phone Number"
+                variant="outlined"
+                fullWidth
+                name="emt_phone_no"
+                type="tel"
+                value={formData.emt_phone_no}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Phone />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<AddCircleOutlineIcon />}
+                fullWidth
+              >
+                Submit
+              </Button>
+            </Grid>
+          </Grid>
         </form>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl pauseOnFocusLoss draggable pauseOnHover />
-      </div>
-    </div>
+      </Card>
+    </Container>
   );
 };
 

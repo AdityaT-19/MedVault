@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { TextField, Button, Container, Card, Typography, Grid, InputAdornment } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AccountCircle, Person, EventNote, Wc, AddCircleOutline as AddCircleOutlineIcon } from '@mui/icons-material';
 
 const AddTechnician = () => {
   const [formData, setFormData] = useState({
@@ -43,37 +45,82 @@ const AddTechnician = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="card shadow p-4" style={{ maxWidth: '400px', margin: '0 auto' }}>
-        <h2 className="text-center mb-4">Add Technician</h2>
+    <Container maxWidth="sm" style={{ marginTop: '50px' }}>
+      <Card sx={{ p: 4 }}>
+        <Typography variant="h4" align="center" gutterBottom>
+          Add Technician
+        </Typography>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="hospital_id" className="form-label">Hospital ID:</label>
-            <input type="text" className="form-control" id="hospital_id" name="hospital_id" value={formData.hospital_id} onChange={handleChange} />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">Name:</label>
-            <input type="text" className="form-control" id="name" name="name" value={formData.name} onChange={handleChange} />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="age" className="form-label">Age:</label>
-            <input type="number" className="form-control" id="age" name="age" value={formData.age} onChange={handleChange} />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="sex" className="form-label">Sex:</label>
-            <input type="text" className="form-control" id="sex" name="sex" value={formData.sex} onChange={handleChange} />
-          </div>
-
-          <div className="d-grid gap-2">
-            <button type="submit" className="btn btn-success btn-lg">Submit</button>
-          </div>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                label="Hospital ID"
+                variant="outlined"
+                fullWidth
+                name="hospital_id"
+                value={formData.hospital_id}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start"><AccountCircle /></InputAdornment>,
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Name"
+                variant="outlined"
+                fullWidth
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start"><Person /></InputAdornment>,
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Age"
+                variant="outlined"
+                fullWidth
+                type="number"
+                name="age"
+                value={formData.age}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start"><EventNote /></InputAdornment>,
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Sex"
+                variant="outlined"
+                fullWidth
+                name="sex"
+                value={formData.sex}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start"><Wc /></InputAdornment>,
+                }}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            size="large"
+            style={{ marginTop: '20px' }}
+            startIcon={<AddCircleOutlineIcon />}
+          >
+            Submit
+          </Button>
         </form>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl pauseOnFocusLoss draggable pauseOnHover />
-      </div>
-    </div>
+      </Card>
+    </Container>
   );
 };
 
