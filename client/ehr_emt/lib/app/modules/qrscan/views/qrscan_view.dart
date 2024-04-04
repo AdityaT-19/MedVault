@@ -21,9 +21,26 @@ class QrCodePage extends StatelessWidget {
               () => Text(c.scanResult.value),
             ),
             const SizedBox(height: 16),
-            ElevatedButton(
+            TextButton(
               onPressed: c.scan,
-              child: const Text('Scan QR Code'),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Icon(
+                    Icons.qr_code_scanner,
+                    size: 50,
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Text(
+                    'Scan QR Code',
+                    style: Get.textTheme.titleLarge!.copyWith(
+                      color: Get.theme.colorScheme.primary,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

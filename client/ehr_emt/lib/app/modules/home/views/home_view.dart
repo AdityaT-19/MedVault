@@ -10,14 +10,18 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Get.theme.colorScheme.background,
+      backgroundColor: Get.theme.colorScheme.primary,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
               height: 400,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
+                    colorFilter: ColorFilter.mode(
+                      Get.theme.colorScheme.primary.withOpacity(0.5),
+                      BlendMode.srcOver,
+                    ),
                     image: AssetImage(
                       'assets/background.png',
                     ),
@@ -35,42 +39,21 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           Container(
                             alignment: Alignment.center,
-                            width: 80,
-                            height: 150,
+                            width: 300,
+                            height: 300,
                             child: FadeInUp(
                               duration: const Duration(milliseconds: 1300),
                               child: Container(
-                                decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage('assets/plus.png'),
-                                  ),
+                                child: Image.asset(
+                                  'assets/plus.png',
+                                  color: Get.theme.colorScheme.onPrimary,
+                                  fit: BoxFit.fill,
                                 ),
                               ),
                             ),
                           ),
                         ],
                       ),
-                      Positioned(
-                        child: FadeInUp(
-                          duration: const Duration(
-                            milliseconds: 1600,
-                          ),
-                          child: Container(
-                            margin: const EdgeInsets.only(
-                              top: 30,
-                            ),
-                            child: Center(
-                              child: Text(
-                                "MedVault",
-                                style: TextStyle(
-                                    color: Get.theme.colorScheme.background,
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
                     ],
                   ),
                 ],
@@ -93,7 +76,7 @@ class HomeView extends GetView<HomeController> {
                         Get.toNamed('/qrscan_view');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Get.theme.colorScheme.primaryContainer,
+                        backgroundColor: Get.theme.colorScheme.background,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 50,
                           vertical: 15,
@@ -105,7 +88,7 @@ class HomeView extends GetView<HomeController> {
                       child: Text(
                         "SOS !!!",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Get.theme.colorScheme.primary,
                           fontSize: 20,
                         ),
                       ),
