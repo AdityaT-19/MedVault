@@ -25,7 +25,7 @@ const AddHospital = () => {
         },
         body: JSON.stringify(formData),
       });
-
+      console.log(response.status);
       if (response.ok) {
         toast.success('Hospital added successfully!');
         // Handle success or redirect as needed
@@ -102,4 +102,5 @@ const AddHospital = () => {
 };
 
 export default AddHospital;
+
 

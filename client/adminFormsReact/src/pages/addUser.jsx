@@ -76,6 +76,10 @@ const SignUpForm = () => {
       name:'NULL',
       dosage:'0mg',
     },
+    medicines:{
+      name:'NULL',
+      dosage:'0mg',
+    },
     bloodGroup: '',
   });
 
