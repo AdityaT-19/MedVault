@@ -22,7 +22,12 @@ const MainPage = () => {
       {/* NavBar */}
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" component={NavLink} to="/" sx={{ flexGrow: 1 }}>
+        <Typography
+            variant="h6"
+            component={NavLink}
+            to="/"
+            sx={{ flexGrow: 1, color: 'white' }} // Added color: 'white'
+          >
             MedVault
           </Typography>
           <Button component={NavLink} to="/addUser" color="inherit">Add User</Button>
@@ -37,7 +42,7 @@ const MainPage = () => {
 
       {/* Main content */}
       <main>
-        <Container sx={{ mt: 4 }}>
+        <Container sx={{ mt: 4, mb: 8 }}> {/* Increased bottom margin */}
           <Grid container spacing={3}>
             <Grid item xs={12} md={8}>
               <Typography variant="h1">Welcome to MedVault</Typography>
@@ -49,6 +54,10 @@ const MainPage = () => {
               </Typography>
               <Typography variant="body1">
                 Get started today by exploring the features available in our system and discover how MedVault can revolutionize healthcare management for you.
+              </Typography>
+              {/* Additional paragraph */}
+              <Typography variant="body1" sx={{ mt: 2 }}>
+                Our dedicated team is constantly working to enhance your experience and provide the best possible solutions for your healthcare needs.
               </Typography>
             </Grid>
           </Grid>
@@ -70,3 +79,4 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
