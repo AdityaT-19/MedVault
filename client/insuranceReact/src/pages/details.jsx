@@ -1,122 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { FiPieChart } from 'react-fi-icons';
-import { useNavigate, useParams } from "react-router-dom";
+import React from 'react';
+import { Grid, Typography, Container, Paper } from '@mui/material';
+import image1 from "../assets/1.jpg";
+import image2 from "../assets/2.jpg";
+import image3 from "../assets/3.jpg";
+import image4 from "../assets/4.jpg";
+
 const InsuranceDetailsPage = () => {
-  const [insuranceDetails, setInsuranceDetails] = useState(null);
-
-  // Fetch insurance details using the insurance_uuid
-  useEffect(() => {
-    const { id } = useParams();
-    const fetchInsuranceDetails = async () => {
-      try {
-        const response = await fetch(`https://medvault-yzpz.onrender.com/insurance/${id}`);
-        const data = await response.json();
-        setInsuranceDetails(data);
-      } catch (error) {
-        console.error('Error fetching insurance details:', error);
-      }
-    };
-
-    fetchInsuranceDetails();
-  }, []);
-
-  const renderInsuranceDetails = () => {
-    if (!insuranceDetails) {
-      return <p style={styles.loading}>Loading...</p>;
-    }
-
-    const remainingClaims = 100 - (insuranceDetails.sum_assured / 1000000) * 100;
-
-    return (
-      <div style={styles.container}>
-        <h1 style={styles.heading}>Insurance Details</h1>
-        <p style={styles.details}>User Name: Selvan</p>
-        {/* Add more details here */}
-        
-        {/* Pie Chart Section (using react-fi-charts) */}
-        <div style={styles.chartContainer}>
-          <h2 style={styles.chartHeading}>Sum Assured Distribution</h2>
-          <div style={styles.chart}>
-            <FiPieChart
-              data={[insuranceDetails.sum_assured, 1000000 - insuranceDetails.sum_assured]}
-              colors={['#36A2EB', '#FF6384']}
-              size={150}
-            />
-          </div>
-        </div>
-
-        {/* Remaining Claims Section */}
-        <div style={styles.remainingClaimsContainer}>
-          <h2 style={styles.remainingClaimsHeading}>Remaining Claims</h2>
-          <p style={styles.remainingClaimsDetails}>Remaining Claims Percentage: 100%</p>
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/019/923/453/original/100-percent-pie-chart-circle-diagram-business-illustration-percentage-infographics-vector.jpg" // Replace with the actual path to your image
-            alt="Remaining Claims Image"
-            style={styles.remainingClaimsImage}
-            height={50}
-          />
-        </div>
-        <h4>History Of Claims</h4>
-        <h5>None until now.</h5>
-      </div>
-    );
-  };
-
-  return <div>{renderInsuranceDetails()}</div>;
-};
-
-const styles = {
-  container: {
-    maxWidth: '800px',
-    margin: '0 auto',
-    textAlign: 'center',
-    padding: '20px',
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-  },
-  loading: {
-    fontSize: '18px',
-    fontWeight: 'bold',
-  },
-  heading: {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    marginBottom: '20px',
-  },
-  details: {
-    fontSize: '16px',
-    marginBottom: '10px',
-  },
-  chartContainer: {
-    maxWidth: '400px',
-    margin: '40px auto',
-  },
-  chartHeading: {
-    fontSize: '18px',
-    fontWeight: 'bold',
-    marginBottom: '10px',
-  },
-  chart: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  remainingClaimsContainer: {
-    marginTop: '40px',
-  },
-  remainingClaimsHeading: {
-    fontSize: '18px',
-    fontWeight: 'bold',
-    marginBottom: '10px',
-  },
-  remainingClaimsDetails: {
-    fontSize: '16px',
-    marginBottom: '20px',
-  },
-  remainingClaimsImage: {
-    maxWidth: '100%',
-    height: 'auto',
-  },
+  return (
+    <Container maxWidth="lg">
+      <Typography variant="h4" gutterBottom align="center">
+        Insurance Details
+      </Typography>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <Paper elevation={3} sx={{ textAlign: 'center', padding: '10px' }}>
+            <img src={image3} alt="Image 3" style={{ maxWidth: '80%', height: 'auto', borderRadius: '8px' }} />
+            <Typography variant="body2" mt={1} fontSize="12px">Yearwise Split of Customers</Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper elevation={3} sx={{ textAlign: 'center', padding: '10px' }}>
+            <img src={image4} alt="Image 4" style={{ maxWidth: '80%', height: 'auto', borderRadius: '8px' }} />
+            <Typography variant="body2" mt={1} fontSize="12px">Analysis based on Policy Type.</Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper elevation={3} sx={{ textAlign: 'center', padding: '10px' }}>
+            <img src={image1} alt="Image 1" style={{ maxWidth: '80%', height: 'auto', borderRadius: '8px' }} />
+            <Typography variant="body2" mt={1} fontSize="12px">Analysis based on Geographic Location</Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper elevation={3} sx={{ textAlign: 'center', padding: '10px' }}>
+            <img src={image2} alt="Image 2" style={{ maxWidth: '80%', height: 'auto', borderRadius: '8px' }} />
+            <Typography variant="body2" mt={1} fontSize="12px">Occupation of People who have taken insurance</Typography>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
+  );
 };
 
 export default InsuranceDetailsPage;
+
+
