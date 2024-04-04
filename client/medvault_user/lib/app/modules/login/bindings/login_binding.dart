@@ -11,6 +11,7 @@ class LoginBinding extends Bindings {
         controller.onInit();
         return controller;
       },
+      permanent: true,
     );
   }
 }

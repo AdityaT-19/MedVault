@@ -19,6 +19,7 @@ class ProfileView extends GetView<ProfileController> {
             icon: Icon(Icons.logout),
             onPressed: () {
               Get.find<LoginController>().signOut();
+              Get.offAllNamed('/login');
             },
           )
         ],

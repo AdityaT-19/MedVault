@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:ehr_emt_recv/URL.dart';
 import 'package:ehr_emt_recv/app/models/emt_form.dart';
+import 'package:ehr_emt_recv/app/modules/login/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
@@ -47,18 +48,36 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: const Text('Dashboard'),
+        actions: [
+          //signout
+          IconButton(
+            onPressed: () async {
+              final loginController = Get.find<LoginController>();
+              await loginController.signOut();
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
         backgroundColor: Get.theme.colorScheme.primaryContainer,
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
               'Waiting for Emeregencies',
-              style: TextStyle(fontSize: 20),
+              style: Get.textTheme.displayMedium,
             ),
-            CircularProgressIndicator(),
+            SizedBox(
+              height: 100,
+              width: 100,
+              child: CircularProgressIndicator(
+                color: Get.theme.colorScheme.primary,
+                strokeWidth: 7,
+                strokeCap: StrokeCap.butt,
+              ),
+            ),
           ],
         ),
       ),

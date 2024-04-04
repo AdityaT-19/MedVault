@@ -30,6 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
             Patient.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
         authController.patient = pat;
         Get.offAllNamed('/dashboard');
+      } else {
+        Get.offAllNamed('/login');
       }
     });
     super.initState();

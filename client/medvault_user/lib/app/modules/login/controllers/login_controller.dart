@@ -27,6 +27,9 @@ class LoginController extends GetxController {
           Get.offAllNamed('/dashboard');
         }
         isLogged.value = true;
+        Get.offAllNamed('/dashboard');
+      } else {
+        isLogged.value = false;
       }
     });
 

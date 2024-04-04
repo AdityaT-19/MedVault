@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:ehr_emt_recv/URL.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -11,8 +12,8 @@ class LoginController extends GetxController {
   void onInit() async {
     FirebaseAuth.instance.authStateChanges().listen((event) async {
       if (event != null) {
-        final response = await http.get(Uri.parse(
-            'http://10.5.27.102:3000/user/getUserDetails/${event.uid}'));
+        final response = await http
+            .get(Uri.parse('${URL.REG_URL}/user/getUserDetails/${event.uid}'));
         print(response.body);
         print(jsonDecode(response.body));
         if (Get.currentRoute != '/sosqr') {
@@ -20,6 +21,7 @@ class LoginController extends GetxController {
         }
         isLogged.value = true;
       }
+      Get.offAllNamed('/login');
     });
 
     super.onInit();
@@ -47,5 +49,9 @@ class LoginController extends GetxController {
     } on FirebaseAuthException catch (e) {
       Get.snackbar('Error', e.message!);
     }
+  }
+
+  Future<void> signOut() async {
+    await authInstance.signOut();
   }
 }
