@@ -73,11 +73,7 @@ const SignUpForm = () => {
       technician_id: '',
     },
     medicines:{
-      name:'NULL',
-      dosage:'0mg',
-    },
-    medicines:{
-      name:'NULL',
+      name:'',
       dosage:'0mg',
     },
     bloodGroup: '',
