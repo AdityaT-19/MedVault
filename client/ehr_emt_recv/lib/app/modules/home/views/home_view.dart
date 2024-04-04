@@ -18,14 +18,15 @@ class HomeView extends GetView<HomeController> {
               height: 400,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    colorFilter: ColorFilter.mode(
-                      Get.theme.colorScheme.primary.withOpacity(0.8),
-                      BlendMode.srcOver,
-                    ),
-                    image: AssetImage(
-                      'assets/background.png',
-                    ),
-                    fit: BoxFit.fill),
+                  colorFilter: ColorFilter.mode(
+                    Get.theme.colorScheme.primary.withOpacity(0.5),
+                    BlendMode.srcOver,
+                  ),
+                  image: const AssetImage(
+                    'assets/background.png',
+                  ),
+                  fit: BoxFit.fill,
+                ),
               ),
               child: Stack(
                 children: [
@@ -39,43 +40,21 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           Container(
                             alignment: Alignment.center,
-                            width: 80,
-                            height: 150,
+                            width: 300,
+                            height: 300,
                             child: FadeInUp(
                               duration: const Duration(milliseconds: 1300),
                               child: Container(
-                                decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage('assets/plus.png'),
-                                  ),
+                                child: Image.asset(
+                                  'assets/plus.png',
+                                  color: Get.theme.colorScheme.onPrimary,
+                                  fit: BoxFit.fill,
                                 ),
                               ),
                             ),
                           ),
                         ],
                       ),
-                      Positioned(
-                        child: FadeInUp(
-                          duration: const Duration(
-                            milliseconds: 1600,
-                          ),
-                          child: Container(
-                            margin: const EdgeInsets.only(
-                              top: 50,
-                            ),
-                            child: Center(
-                              child: Text(
-                                "MedVault",
-                                style: TextStyle(
-                                  color: Get.theme.colorScheme.background,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
                     ],
                   ),
                 ],
@@ -95,7 +74,7 @@ class HomeView extends GetView<HomeController> {
                         Get.toNamed('/dashboard');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Get.theme.colorScheme.onPrimary,
+                        backgroundColor: Get.theme.colorScheme.background,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 50,
                           vertical: 15,

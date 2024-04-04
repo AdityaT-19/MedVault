@@ -10,16 +10,23 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.theme.colorScheme.primary,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
               height: 400,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/background.png'),
-                      fit: BoxFit.fill)),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    colorFilter: ColorFilter.mode(
+                      Get.theme.colorScheme.primary.withOpacity(0.5),
+                      BlendMode.srcOver,
+                    ),
+                    image: const AssetImage(
+                      'assets/background.png',
+                    ),
+                    fit: BoxFit.fill),
+              ),
               child: Stack(
                 children: <Widget>[
                   Column(
@@ -32,36 +39,19 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           Container(
                             alignment: Alignment.center,
-                            width: 80,
-                            height: 150,
+                            width: 300,
+                            height: 300,
                             child: FadeInUp(
-                                duration: const Duration(milliseconds: 1300),
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                      image: DecorationImage(
-                                          image:
-                                              AssetImage('assets/plus.png'))),
-                                )),
-                          ),
-                        ],
-                      ),
-                      Positioned(
-                        child: FadeInUp(
-                          duration: const Duration(milliseconds: 1600),
-                          child: Container(
-                            margin: const EdgeInsets.only(top: 30),
-                            child: const Center(
-                              child: Text(
-                                "MedVault",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.bold),
+                              duration: const Duration(milliseconds: 1300),
+                              child: Image.asset(
+                                'assets/plus.png',
+                                color: Get.theme.colorScheme.onPrimary,
+                                fit: BoxFit.fill,
                               ),
                             ),
                           ),
-                        ),
-                      )
+                        ],
+                      ),
                     ],
                   ),
                 ],
@@ -75,22 +65,32 @@ class HomeView extends GetView<HomeController> {
                     height: 30,
                   ),
                   FadeInUp(
-                      duration: const Duration(milliseconds: 1900),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Get.toNamed('/dashboard');
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Get.theme.colorScheme.primary,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 50, vertical: 15),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10))),
-                        child: const Text(
-                          "Lets Go!",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                    duration: const Duration(milliseconds: 1900),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.toNamed('/dashboard');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Get.theme.colorScheme.background,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 50,
+                          vertical: 15,
                         ),
-                      )),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        "Lets Go!",
+                        style: TextStyle(
+                          color: Get.theme.colorScheme.primary,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
                   const SizedBox(
                     height: 70,
                   ),
