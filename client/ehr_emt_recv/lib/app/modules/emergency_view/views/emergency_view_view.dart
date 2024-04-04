@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/emergency_view_controller.dart';
-
 class EmergencyViewView extends StatefulWidget {
   const EmergencyViewView({Key? key, required this.data}) : super(key: key);
   final EMTForm data;
@@ -34,7 +32,10 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
             child: Column(
               children: [
                 ListTile(
-                  title: Text("UID", style: TextStyle(color: Colors.black)),
+                  title: Text(
+                    "UID",
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
                 Text(
                   widget.data.patientId,

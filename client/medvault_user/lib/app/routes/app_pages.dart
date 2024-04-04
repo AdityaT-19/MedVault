@@ -48,6 +48,7 @@ class AppPages {
     GetPage(
       name: _Paths.SPLASH,
       page: () => SplashScreen(),
+      binding: LoginBinding(),
     ),
   ];
 }

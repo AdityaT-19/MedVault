@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
-  final loginCOn = Get.put(LoginController());
+  final loginCOn = Get.find<LoginController>();
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
   @override

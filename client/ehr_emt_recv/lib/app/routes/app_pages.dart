@@ -35,7 +35,11 @@ class AppPages {
       page: () => Dashboard(),
       binding: DashboardBinding(),
     ),
-    GetPage(name: _Paths.SPLASH, page: () => const SplashScreen()),
+    GetPage(
+      name: _Paths.SPLASH,
+      page: () => const SplashScreen(),
+      binding: LoginBinding(),
+    ),
     GetPage(
       name: _Paths.EMERGENCY,
       page: () => EmergencyViewView(
