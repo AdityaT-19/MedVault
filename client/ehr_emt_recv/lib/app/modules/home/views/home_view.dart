@@ -67,9 +67,10 @@ class HomeView extends GetView<HomeController> {
                               child: Text(
                                 "MedVault",
                                 style: TextStyle(
-                                    color: Get.theme.colorScheme.background,
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.bold),
+                                  color: Get.theme.colorScheme.background,
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -108,7 +109,7 @@ class HomeView extends GetView<HomeController> {
                       child: Text(
                         "Lets Go!",
                         style: TextStyle(
-                          color: Get.theme.colorScheme.secondary,
+                          color: Get.theme.colorScheme.primary,
                           fontSize: 20,
                         ),
                       ),

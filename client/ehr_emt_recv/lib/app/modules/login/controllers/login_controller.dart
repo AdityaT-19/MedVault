@@ -16,9 +16,6 @@ class LoginController extends GetxController {
             .get(Uri.parse('${URL.REG_URL}/user/getUserDetails/${event.uid}'));
         print(response.body);
         print(jsonDecode(response.body));
-        if (Get.currentRoute != '/sosqr') {
-          Get.offAllNamed('/dashboard');
-        }
         isLogged.value = true;
       }
       Get.offAllNamed('/login');
