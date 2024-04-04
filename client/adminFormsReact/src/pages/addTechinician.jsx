@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { TextField, Button, Container, Card, Typography, Grid, InputAdornment } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AccountCircle, Person, EventNote, Wc, AddCircleOutline as AddCircleOutlineIcon } from '@mui/icons-material';
 
 const AddTechnician = () => {
   const [formData, setFormData] = useState({
@@ -43,36 +45,88 @@ const AddTechnician = () => {
   };
 
   return (
-    <div className="form-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <div style={{ boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', padding: '20px', borderRadius: '8px', width: '400px' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#333' }}>Add Technician</h2>
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Hospital ID:</span>
-            <input type="text" name="hospital_id" value={formData.hospital_id} onChange={handleChange} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
-
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Name:</span>
-            <input type="text" name="name" value={formData.name} onChange={handleChange} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
-
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Age:</span>
-            <input type="number" name="age" value={formData.age} onChange={handleChange} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
-
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Sex:</span>
-            <input type="text" name="sex" value={formData.sex} onChange={handleChange} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
-
-          <button type="submit" style={{ padding: '10px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Submit</button>
+    <Container maxWidth="sm" style={{ marginTop: '50px' }}>
+      <Card sx={{ p: 4 }}>
+        <Typography variant="h4" align="center" gutterBottom>
+          Add Technician
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                label="Hospital ID"
+                variant="outlined"
+                fullWidth
+                name="hospital_id"
+                value={formData.hospital_id}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start"><AccountCircle /></InputAdornment>,
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Name"
+                variant="outlined"
+                fullWidth
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start"><Person /></InputAdornment>,
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Age"
+                variant="outlined"
+                fullWidth
+                type="number"
+                name="age"
+                value={formData.age}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start"><EventNote /></InputAdornment>,
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Sex"
+                variant="outlined"
+                fullWidth
+                name="sex"
+                value={formData.sex}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start"><Wc /></InputAdornment>,
+                }}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            size="large"
+            style={{ marginTop: '20px' }}
+            startIcon={<AddCircleOutlineIcon />}
+          >
+            Submit
+          </Button>
         </form>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl pauseOnFocusLoss draggable pauseOnHover />
-      </div>
-    </div>
+      </Card>
+    </Container>
   );
 };
 
 export default AddTechnician;
+
+
+
+
+

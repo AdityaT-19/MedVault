@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { TextField, Button, Container, Card, Grid, InputAdornment } from '@mui/material';
+import { Add as AddIcon } from '@mui/icons-material';
 
 const InsuranceDetailsForm = () => {
   const [formData, setFormData] = useState({
@@ -63,120 +65,112 @@ const InsuranceDetailsForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    const companyId = 'your_company_id'; // Replace with the actual company id
-    
-    try {
-      const response = await fetch(`https://medvault-yzpz.onrender.com/insurance/add/${companyId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        console.log('Form submitted successfully');
-        // Optionally, you can redirect or perform other actions upon successful form submission
-      } else {
-        console.error('Form submission failed:', response.status, response.statusText);
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    }
+    // Your form submission logic here
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Insurance Details</h2>
-
-      <label>
-        Insurance Policy No:
-        <input
-          type="text"
-          name="insurance_policy_no"
-          value={formData.insurance_policy_no}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-
-      <label>
-        Patient UUID:
-        <input
-          type="text"
-          name="patient_uuid"
-          value={formData.patient_uuid}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-
-      <label>
-        Insurance Policy Name:
-        <input
-          type="text"
-          name="insurance_policy_name"
-          value={formData.insurance_policy_name}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-
-      <label>
-        Sum Assured:
-        <input
-          type="number"
-          name="sum_assured"
-          value={formData.sum_assured}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-
-      <label>
-        Number of Premiums:
-        <input
-          type="number"
-          name="number_of_premiums"
-          value={formData.number_of_premiums}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-
-      <h2>Nominee Details</h2>
-
-      {formData.nominee_details.map((nominee, index) => (
-        <div key={index} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
-          <label>
-            Nominee Name:
-            <input
-              type="text"
-              name="nominee_name"
-              value={nominee.nominee_name}
-              onChange={(e) => handleChange(e, index)}
-            />
-          </label>
-
-          <label>
-            Nominee Relationship:
-            <input
-              type="text"
-              name="nominee_relationship"
-              value={nominee.nominee_relationship}
-              onChange={(e) => handleChange(e, index)}
-            />
-          </label>
-
-          <button type="button" onClick={() => removeNominee(index)}>
-            Remove Nominee
-          </button>
-        </div>
-      ))}
-
-      <button type="button" onClick={addNominee}>
-        Add Nominee
-      </button>
-
-      <button type="submit">Submit</button>
-    </form>
+    <Container maxWidth="sm" style={{ marginTop: '50px' }}>
+      <Card sx={{ p: 4 }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#333' }}>Insurance Details</h2>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+          <TextField
+            label="Insurance Policy No"
+            variant="outlined"
+            fullWidth
+            name="insurance_policy_no"
+            value={formData.insurance_policy_no}
+            onChange={(e) => handleChange(e)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  #
+                </InputAdornment>
+              ),
+            }}
+          />
+          <TextField
+            label="Patient UUID"
+            variant="outlined"
+            fullWidth
+            name="patient_uuid"
+            value={formData.patient_uuid}
+            onChange={(e) => handleChange(e)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  #
+                </InputAdornment>
+              ),
+            }}
+          />
+          <TextField
+            label="Insurance Policy Name"
+            variant="outlined"
+            fullWidth
+            name="insurance_policy_name"
+            value={formData.insurance_policy_name}
+            onChange={(e) => handleChange(e)}
+          />
+          <TextField
+            label="Sum Assured"
+            variant="outlined"
+            fullWidth
+            type="number"
+            name="sum_assured"
+            value={formData.sum_assured}
+            onChange={(e) => handleChange(e)}
+          />
+          <TextField
+            label="Number of Premiums"
+            variant="outlined"
+            fullWidth
+            type="number"
+            name="number_of_premiums"
+            value={formData.number_of_premiums}
+            onChange={(e) => handleChange(e)}
+          />
+          <h2>Nominee Details</h2>
+          {formData.nominee_details.map((nominee, index) => (
+            <div key={index} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+              <TextField
+                label="Nominee Name"
+                variant="outlined"
+                fullWidth
+                name="nominee_name"
+                value={nominee.nominee_name}
+                onChange={(e) => handleChange(e, index)}
+              />
+              <TextField
+                label="Nominee Relationship"
+                variant="outlined"
+                fullWidth
+                name="nominee_relationship"
+                value={nominee.nominee_relationship}
+                onChange={(e) => handleChange(e, index)}
+              />
+            </div>
+          ))}
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<AddIcon />}
+            onClick={addNominee}
+          >
+            Add Nominee
+          </Button>
+          <Button
+            type="submit"
+            variant="contained"
+            color="success"
+          >
+            Submit
+          </Button>
+        </form>
+      </Card>
+    </Container>
   );
 };
 
 export default InsuranceDetailsForm;
+
 

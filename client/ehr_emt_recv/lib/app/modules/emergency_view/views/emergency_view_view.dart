@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/emergency_view_controller.dart';
-
 class EmergencyViewView extends StatefulWidget {
   const EmergencyViewView({Key? key, required this.data}) : super(key: key);
   final EMTForm data;
@@ -19,6 +17,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Emergency View'),
+        backgroundColor: Get.theme.colorScheme.primaryContainer,
       ),
       body: ListView(
         children: [
@@ -29,19 +28,22 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
-                ListTile(
-                  title: Text("UID", style: TextStyle(color: Colors.black)),
+                const ListTile(
+                  title: Text(
+                    "UID",
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
                 Text(
                   widget.data.patientId,
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -50,22 +52,24 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
                 ListTile(
-                  title: Text("EMT_ID", style: TextStyle(color: Colors.black)),
+                  title: Text(
+                    "EMT_ID",
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
                 Text(
                   widget.data.emtId,
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -77,7 +81,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
@@ -90,7 +94,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -102,7 +106,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
@@ -113,7 +117,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
                   color: widget.data.triage.value,
                   child: const SizedBox(
                     height: 50,
-                    width: 50,
+                    width: 100,
                   ),
                 ),
                 const SizedBox(
@@ -126,7 +130,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
@@ -139,7 +143,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -151,7 +155,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
@@ -164,7 +168,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -176,7 +180,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
@@ -188,7 +192,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
@@ -200,7 +204,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.primary,
+              color: Get.theme.colorScheme.primaryContainer,
             ),
             child: Column(
               children: [
@@ -213,7 +217,7 @@ class _EmergencyViewViewState extends State<EmergencyViewView> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,

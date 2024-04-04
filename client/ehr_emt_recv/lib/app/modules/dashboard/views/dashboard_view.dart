@@ -48,12 +48,16 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Dashboard'),
+        backgroundColor: Get.theme.colorScheme.primaryContainer,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Waiting for Emeregencies'),
+            Text(
+              'Waiting for Emeregencies',
+              style: TextStyle(fontSize: 20),
+            ),
             CircularProgressIndicator(),
           ],
         ),

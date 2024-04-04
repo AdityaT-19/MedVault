@@ -10,14 +10,18 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Get.theme.colorScheme.background,
+      backgroundColor: Get.theme.colorScheme.primary,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
               height: 400,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
+                    colorFilter: ColorFilter.mode(
+                      Get.theme.colorScheme.primary.withOpacity(0.8),
+                      BlendMode.srcOver,
+                    ),
                     image: AssetImage(
                       'assets/background.png',
                     ),
@@ -57,7 +61,7 @@ class HomeView extends GetView<HomeController> {
                           ),
                           child: Container(
                             margin: const EdgeInsets.only(
-                              top: 30,
+                              top: 50,
                             ),
                             child: Center(
                               child: Text(
@@ -81,7 +85,7 @@ class HomeView extends GetView<HomeController> {
               child: Column(
                 children: [
                   const SizedBox(
-                    height: 30,
+                    height: 100,
                   ),
                   FadeInUp(
                     duration: const Duration(milliseconds: 1900),
@@ -90,7 +94,7 @@ class HomeView extends GetView<HomeController> {
                         Get.toNamed('/dashboard');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Get.theme.colorScheme.primary,
+                        backgroundColor: Get.theme.colorScheme.onPrimary,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 50,
                           vertical: 15,
@@ -104,7 +108,7 @@ class HomeView extends GetView<HomeController> {
                       child: Text(
                         "Lets Go!",
                         style: TextStyle(
-                          color: Get.theme.colorScheme.background,
+                          color: Get.theme.colorScheme.secondary,
                           fontSize: 20,
                         ),
                       ),

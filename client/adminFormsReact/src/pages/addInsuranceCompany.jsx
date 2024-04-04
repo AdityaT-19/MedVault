@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { TextField, Button, Container, Card, Typography, Grid, InputAdornment } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Business, Email, LocationOn, AddCircleOutline as AddCircleOutlineIcon } from '@mui/icons-material';
 
 const AddInsuranceCompany = () => {
   const [formData, setFormData] = useState({
     company_name: '',
     email: '',
+    location: '', // Adding location to formData state
   });
 
   const handleChange = (e) => {
@@ -41,26 +44,89 @@ const AddInsuranceCompany = () => {
   };
 
   return (
-    <div className="form-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <div style={{ boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', padding: '20px', borderRadius: '8px', width: '400px' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#333' }}>Add Insurance Company</h2>
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Company Name:</span>
-            <input type="text" name="company_name" value={formData.company_name} onChange={handleChange} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
-
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Email:</span>
-            <input type="text" name="email" value={formData.email} onChange={handleChange} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
-
-          <button type="submit" style={{ padding: '10px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Submit</button>
+    <Container maxWidth="sm" style={{ marginTop: '50px' }}>
+      <Card sx={{ p: 4 }}>
+        <Typography variant="h4" align="center" gutterBottom>
+          Add Insurance Company
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                label="Company Name"
+                variant="outlined"
+                fullWidth
+                name="company_name"
+                value={formData.company_name}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" sx={{ marginRight: '10px' }}>
+                      <Business />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Email"
+                variant="outlined"
+                fullWidth
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" sx={{ marginRight: '10px' }}>
+                      <Email />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Location"
+                variant="outlined"
+                fullWidth
+                name="location"
+                value={formData.location}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" sx={{ marginRight: '10px' }}>
+                      <LocationOn />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<AddCircleOutlineIcon />}
+                fullWidth
+              >
+                Submit
+              </Button>
+            </Grid>
+          </Grid>
         </form>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl pauseOnFocusLoss draggable pauseOnHover />
-      </div>
-    </div>
+      </Card>
+    </Container>
   );
 };
 
 export default AddInsuranceCompany;
+
+
+
+
+
+
+
