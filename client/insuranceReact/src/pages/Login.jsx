@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button, TextField, Typography, Container, Box } from '@mui/material';
 
 const InsuranceLogin = () => {
   const [insuranceUUID, setInsuranceUUID] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // Move useNavigate outside of handleLogin
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
+      navigate(`/home/${insuranceUUID}`);
       const response = await fetch('https://medvault-yzpz.onrender.com/insurance/signin', {
         method: 'POST',
         headers: {
@@ -24,7 +26,6 @@ const InsuranceLogin = () => {
         setMessage(data.message);
         console.log("entered here")
         navigate(`/home/${insuranceUUID}`);
-        // Redirect or perform actions upon successful login
       } else {
         setMessage(data.message);
       }
@@ -35,67 +36,46 @@ const InsuranceLogin = () => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}
-    >
-      <form
-        onSubmit={handleLogin}
-        style={{
-          background: '#fff',
-          padding: '20px',
-          borderRadius: '8px',
-          boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    <Container maxWidth="xs">
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
-        <h2>Insurance Company Login</h2>
-        <label htmlFor="insuranceUUID" style={{ marginBottom: '10px' }}>
-          Insurance UUID:
-        </label>
-        <input
-          type="text"
-          id="insuranceUUID"
-          name="insuranceUUID"
-          value={insuranceUUID}
-          onChange={(e) => setInsuranceUUID(e.target.value)}
-          required
-          style={{
-            width: '100%',
-            padding: '10px',
-            marginBottom: '10px',
-            border: '1px solid #ccc',
-            borderRadius: '4px',
-            boxSizing: 'border-box',
-          }}
-        />
-        <button
-          type="submit"
-          style={{
-            backgroundColor: '#4caf50',
-            color: 'white',
-            padding: '10px 15px',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-          }}
-        >
-          Log In
-        </button>
-        <p
-          id="message"
-          style={{
-            marginTop: '10px',
-            color: 'red',
-          }}
-        >
-          {message}
-        </p>
-      </form>
-    </div>
+        <Typography component="h1" variant="h5">
+          Insurance Company Login
+        </Typography>
+        <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="insuranceUUID"
+            label="Insurance UUID"
+            name="insuranceUUID"
+            autoFocus
+            value={insuranceUUID}
+            onChange={(e) => setInsuranceUUID(e.target.value)}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Log In
+          </Button>
+          {message && (
+            <Typography variant="body2" color="error" align="center">
+              {message}
+            </Typography>
+          )}
+        </Box>
+      </Box>
+    </Container>
   );
 };
 

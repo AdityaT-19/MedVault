@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { FiLogOut } from "react-icons/fi";
 
 function ColContents(props) {
   const navigator = useNavigate();
 
   const handleViewMore = () => {
-    navigator(`/dashboard/${id}`);
+    navigator(`/dashboard/${props.id}`);
   };
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md mb-4 md:flex md:justify-between">
       <div className="mb-4 md:mb-0 md:mr-4">
-
         <p className="text-gray-700">Patient ID: {props.patient_uuid}</p>
         <p className="text-gray-700">Amount: {props.sum_assured}</p>
         <p className="text-gray-700">Name of Policy: {props.name_of_policy}</p>
         <p className="text-gray-700">Number of Premiums: {props.number_of_premiums}</p>
         <p className="text-gray-700">Policy Number/Name: {props.insurance_policy_no}</p>
-        <br></br>
+        <br />
         <button
-          className="bg-blue-500 p-2 text-white rounded-md text-sm hover:bg-blue-500 focus:outline-none focus:ring focus:border-blue-300"
+          className="bg-blue-500 px-4 py-2 text-white rounded-md text-sm hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
           onClick={handleViewMore}
         >
           View Full Record
@@ -72,7 +70,7 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <div className="">
+      <div className="container mx-auto px-4">
         {details.map((item) => (
           <ColContents key={item.id} {...item} />
         ))}
