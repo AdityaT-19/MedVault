@@ -41,21 +41,23 @@ const AddInsuranceCompany = () => {
   };
 
   return (
-    <div className="form-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <div style={{ boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', padding: '20px', borderRadius: '8px', width: '400px' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#333' }}>Add Insurance Company</h2>
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Company Name:</span>
-            <input type="text" name="company_name" value={formData.company_name} onChange={handleChange} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
+    <div className="container mt-5">
+      <div className="card shadow p-4" style={{ maxWidth: '400px', margin: '0 auto' }}>
+        <h2 className="text-center mb-4">Add Insurance Company</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="company_name" className="form-label">Company Name:</label>
+            <input type="text" className="form-control" id="company_name" name="company_name" value={formData.company_name} onChange={handleChange} />
+          </div>
 
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Email:</span>
-            <input type="text" name="email" value={formData.email} onChange={handleChange} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
-          </label>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">Email:</label>
+            <input type="text" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} />
+          </div>
 
-          <button type="submit" style={{ padding: '10px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Submit</button>
+          <div className="d-grid gap-2">
+            <button type="submit" className="btn btn-success btn-lg">Submit</button>
+          </div>
         </form>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl pauseOnFocusLoss draggable pauseOnHover />
       </div>
@@ -64,3 +66,4 @@ const AddInsuranceCompany = () => {
 };
 
 export default AddInsuranceCompany;
+

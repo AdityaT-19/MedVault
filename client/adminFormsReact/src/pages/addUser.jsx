@@ -101,28 +101,7 @@ const SignUpForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          profile_image:formData.profile_image,
-          user_name:formData.user_name,
-          age:formData.age,
-          sex:formData.sex,
-          phone_no:formData.phone_no,
-          email:formData.email,
-          emergency_details:[formData.emergency_details],
-          address:formData.address,
-          aadhar_no:formData.aadhar_no,
-          bpl_no:formData.bpl_no,
-          health_scheme_data:[formData.health_scheme_data],
-          insurance_policy_no:formData.insurance_policy_no,
-          medical_diseases:[formData.medical_diseases],
-          past_history:[formData.past_history],
-          treatments_history:[formData.treatments_history],
-          allergies:[formData.allergies],
-          prescriptions:[formData.prescriptions],
-          lab_reports:[formData.lab_reports],
-          medicines:[formData.medicines],
-          bloodGroup:formData.bloodGroup,
-        }),
+        body: JSON.stringify(formData),
       });
       console.log(response.status);
       if (response.ok) {
@@ -212,252 +191,136 @@ const SignUpForm = () => {
           </label>
 
           <label>
-          Scheme Name:
-          <input
-            type="text"
-            name="health_scheme_data.scheme_name"
-            value={formData.health_scheme_data.scheme_name}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          ID:
-          <input
-            type="text"
-            name="health_scheme_data.id"
-            value={formData.health_scheme_data.id}
-            onChange={handleChange}
-          />
-        </label>
+            Scheme Name:
+            <input type="text" name="health_scheme_data.scheme_name" value={formData.health_scheme_data.scheme_name} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
 
-        <label>
-          Disease Name:
-          <input
-            type="text"
-            name="medical_diseases.disease_name"
-            value={formData.medical_diseases.disease_name}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Severity:
-          <input
-            type="text"
-            name="medical_diseases.severity"
-            value={formData.medical_diseases.severity}
-            onChange={handleChange}
-          />
-        </label>
+          <label>
+            ID:
+            <input type="text" name="health_scheme_data.id" value={formData.health_scheme_data.id} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
 
-        <label>
-          Disease Name:
-          <input
-            type="text"
-            name="past_history.disease_name"
-            value={formData.past_history.disease_name}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Doctor Name:
-          <input
-            type="text"
-            name="past_history.doctor_name"
-            value={formData.past_history.doctor_name}
-            onChange={handleChange}
-          />
-        </label>
+          <label>
+            Disease Name:
+            <input type="text" name="medical_diseases.disease_name" value={formData.medical_diseases.disease_name} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
 
-        <label>
-          Treatments:
-          <input
-            type="text"
-            name="treatments_history.treatments"
-            value={formData.treatments_history.treatments}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Number of Days:
-          <input
-            type="number"
-            name="treatments_history.no_of_days"
-            value={formData.treatments_history.no_of_days}
-            onChange={handleChange}
-          />
-        </label>
+          <label>
+            Severity:
+            <input type="text" name="medical_diseases.severity" value={formData.medical_diseases.severity} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
 
-        <label>
-          Allergy Name:
-          <input
-            type="text"
-            name="allergies.allergy_name"
-            value={formData.allergies.allergy_name}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Severity:
-          <input
-            type="text"
-            name="allergies.severity"
-            value={formData.allergies.severity}
-            onChange={handleChange}
-          />
-        </label>
+          <label>
+            Disease Name:
+            <input type="text" name="past_history.disease_name" value={formData.past_history.disease_name} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
 
+          <label>
+            Doctor Name:
+            <input type="text" name="past_history.doctor_name" value={formData.past_history.doctor_name} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
+
+          <label>
+            Treatments:
+            <input type="text" name="treatments_history.treatments" value={formData.treatments_history.treatments} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
+
+          <label>
+            Number of Days:
+            <input type="number" name="treatments_history.no_of_days" value={formData.treatments_history.no_of_days} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
+
+          <label>
+            Allergy Name:
+            <input type="text" name="allergies.allergy_name" value={formData.allergies.allergy_name} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
+
+          <label>
+            Severity:
+            <input type="text" name="allergies.severity" value={formData.allergies.severity} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
 
           <label>
             Prescription ID:
-            <input
-              type="text"
-              name="prescriptions.prescription_id"
-              value={formData.prescriptions.prescription_id}
-              onChange={handleChange}
-            />
+            <input type="text" name="prescriptions.prescription_id" value={formData.prescriptions.prescription_id} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
+
           <label>
             Health Issue:
-            <input
-              type="text"
-              name="prescriptions.health_issue"
-              value={formData.prescriptions.health_issue}
-              onChange={handleChange}
-            />
+            <input type="text" name="prescriptions.health_issue" value={formData.prescriptions.health_issue} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
+
           <label>
             Suspected Disease Name:
-            <input
-              type="text"
-              name="prescriptions.suspected_disease.disease_name"
-              value={formData.prescriptions.suspected_disease.disease_name}
-              onChange={handleChange}
-            />
+            <input type="text" name="prescriptions.suspected_disease.disease_name" value={formData.prescriptions.suspected_disease.disease_name} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
+
           <label>
             Suspected Disease Severity:
-            <input
-              type="text"
-              name="prescriptions.suspected_disease.severity"
-              value={formData.prescriptions.suspected_disease.severity}
-              onChange={handleChange}
-            />
+            <input type="text" name="prescriptions.suspected_disease.severity" value={formData.prescriptions.suspected_disease.severity} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
+
           <label>
             Treatments:
-            <input
-              type="text"
-              name="prescriptions.treatement_required.treatments"
-              value={formData.prescriptions.treatement_required.treatments}
-              onChange={handleChange}
-            />
+            <input type="text" name="prescriptions.treatement_required.treatments" value={formData.prescriptions.treatement_required.treatments} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
+
           <label>
             Number of Days for Treatment:
-            <input
-              type="number"
-              name="prescriptions.treatement_required.no_of_days"
-              value={formData.prescriptions.treatement_required.no_of_days}
-              onChange={handleChange}
-            />
+            <input type="number" name="prescriptions.treatement_required.no_of_days" value={formData.prescriptions.treatement_required.no_of_days} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
+
           <label>
             Follow Up:
-            <input
-              type="text"
-              name="prescriptions.follow_up"
-              value={formData.prescriptions.follow_up}
-              onChange={handleChange}
-            />
+            <input type="text" name="prescriptions.follow_up" value={formData.prescriptions.follow_up} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
+
           <label>
             Medicine Name:
-            <input
-              type="text"
-              name="prescriptions.medicines.name"
-              value={formData.prescriptions.medicines.name}
-              onChange={handleChange}
-            />
+            <input type="text" name="prescriptions.medicines.name" value={formData.prescriptions.medicines.name} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
+
           <label>
             Medicine Dosage:
-            <input
-              type="text"
-              name="prescriptions.medicines.dosage"
-              value={formData.prescriptions.medicines.dosage}
-              onChange={handleChange}
-            />
+            <input type="text" name="prescriptions.medicines.dosage" value={formData.prescriptions.medicines.dosage} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
+
           <label>
             Doctor ID:
-            <input
-              type="text"
-              name="prescriptions.doctor_id"
-              value={formData.prescriptions.doctor_id}
-              onChange={handleChange}
-            />
+            <input type="text" name="prescriptions.doctor_id" value={formData.prescriptions.doctor_id} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
 
           {/* Lab Reports */}
           <h3>Lab Reports</h3>
           <label>
             Report ID:
-            <input
-              type="text"
-              name="lab_reports.report_id"
-              value={formData.lab_reports.report_id}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Report Name:
-            <input
-              type="text"
-              name="lab_reports.report_name"
-              value={formData.lab_reports.report_name}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Type of Test:
-            <input
-              type="text"
-              name="lab_reports.type_of_test"
-              value={formData.lab_reports.type_of_test}
-              onChange={handleChange}
-            />
-          </label>
-  
-          <label>
-            Sub Test Reports Path:
-            <input
-              type="text"
-              name="lab_reports.sub_test_reports[0].path"
-              value={formData.lab_reports.sub_test_reports[0].path}
-              onChange={handleChange}
-            />
-          </label>
-          
-          <label>
-            Doctor ID:
-            <input
-              type="text"
-              name="lab_reports.doctor_id"
-              value={formData.lab_reports.doctor_id}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Technician ID:
-            <input
-              type="text"
-              name="lab_reports.techinican_id"
-              value={formData.lab_reports.techinican_id}
-              onChange={handleChange}
-            />
+            <input type="text" name="lab_reports.report_id" value={formData.lab_reports.report_id} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
 
-         
+          <label>
+            Report Name:
+            <input type="text" name="lab_reports.report_name" value={formData.lab_reports.report_name} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
+
+          <label>
+            Type of Test:
+            <input type="text" name="lab_reports.type_of_test" value={formData.lab_reports.type_of_test} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
+
+          <label>
+            Sub Test Reports Path:
+            <input type="text" name="lab_reports.sub_test_reports[0].path" value={formData.lab_reports.sub_test_reports[0].path} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
+
+          <label>
+            Doctor ID:
+            <input type="text" name="lab_reports.doctor_id" value={formData.lab_reports.doctor_id} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
+
+          <label>
+            Technician ID:
+            <input type="text" name="lab_reports.techinican_id" value={formData.lab_reports.techinican_id} onChange={handleChange} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
 
           <button type="submit" style={{ padding: '10px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Submit</button>
         </form>

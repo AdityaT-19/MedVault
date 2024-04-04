@@ -2,35 +2,6 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const formContainer = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100vh',
-};
-
-const formStyle = {
-  boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-  padding: '20px',
-  borderRadius: '8px',
-  width: '400px',
-};
-
-const inputStyle = {
-  padding: '10px',
-  borderRadius: '4px',
-  border: '1px solid #ccc',
-};
-
-const buttonStyle = {
-  padding: '10px',
-  backgroundColor: '#4CAF50',
-  color: 'white',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
-};
-
 const AddEMT = () => {
   const [formData, setFormData] = useState({
     hospital_id: '',
@@ -72,31 +43,33 @@ const AddEMT = () => {
   };
 
   return (
-    <div style={formContainer}>
-      <div style={formStyle}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#333' }}>Add EMT</h2>
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>Hospital ID:</span>
-            <input type="text" name="hospital_id" value={formData.hospital_id} onChange={handleChange} style={inputStyle} />
-          </label>
+    <div className="container mt-5">
+      <div className="card shadow p-4" style={{ maxWidth: '400px', margin: '0 auto' }}>
+        <h2 className="text-center mb-4">Add EMT</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="hospital_id" className="form-label">Hospital ID:</label>
+            <input type="text" className="form-control" id="hospital_id" name="hospital_id" value={formData.hospital_id} onChange={handleChange} />
+          </div>
 
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>EMT Name:</span>
-            <input type="text" name="emt_name" value={formData.emt_name} onChange={handleChange} style={inputStyle} />
-          </label>
+          <div className="mb-3">
+            <label htmlFor="emt_name" className="form-label">EMT Name:</label>
+            <input type="text" className="form-control" id="emt_name" name="emt_name" value={formData.emt_name} onChange={handleChange} />
+          </div>
 
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>EMT Email:</span>
-            <input type="text" name="emt_email" value={formData.emt_email} onChange={handleChange} style={inputStyle} />
-          </label>
+          <div className="mb-3">
+            <label htmlFor="emt_email" className="form-label">EMT Email:</label>
+            <input type="text" className="form-control" id="emt_email" name="emt_email" value={formData.emt_email} onChange={handleChange} />
+          </div>
 
-          <label>
-            <span style={{ marginBottom: '5px', color: '#555' }}>EMT Phone Number:</span>
-            <input type="text" name="emt_phone_no" value={formData.emt_phone_no} onChange={handleChange} style={inputStyle} />
-          </label>
+          <div className="mb-3">
+            <label htmlFor="emt_phone_no" className="form-label">EMT Phone Number:</label>
+            <input type="text" className="form-control" id="emt_phone_no" name="emt_phone_no" value={formData.emt_phone_no} onChange={handleChange} />
+          </div>
 
-          <button type="submit" style={buttonStyle}>Submit</button>
+          <div className="d-grid gap-2">
+            <button type="submit" className="btn btn-success btn-lg">Submit</button>
+          </div>
         </form>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl pauseOnFocusLoss draggable pauseOnHover />
       </div>
@@ -105,5 +78,3 @@ const AddEMT = () => {
 };
 
 export default AddEMT;
-
-

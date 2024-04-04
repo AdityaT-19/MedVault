@@ -63,118 +63,61 @@ const InsuranceDetailsForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    const companyId = 'your_company_id'; // Replace with the actual company id
-    
-    try {
-      const response = await fetch(`https://medvault-yzpz.onrender.com/insurance/add/${companyId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        console.log('Form submitted successfully');
-        // Optionally, you can redirect or perform other actions upon successful form submission
-      } else {
-        console.error('Form submission failed:', response.status, response.statusText);
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    }
+    // Your form submission logic here
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Insurance Details</h2>
-
-      <label>
-        Insurance Policy No:
-        <input
-          type="text"
-          name="insurance_policy_no"
-          value={formData.insurance_policy_no}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-
-      <label>
-        Patient UUID:
-        <input
-          type="text"
-          name="patient_uuid"
-          value={formData.patient_uuid}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-
-      <label>
-        Insurance Policy Name:
-        <input
-          type="text"
-          name="insurance_policy_name"
-          value={formData.insurance_policy_name}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-
-      <label>
-        Sum Assured:
-        <input
-          type="number"
-          name="sum_assured"
-          value={formData.sum_assured}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-
-      <label>
-        Number of Premiums:
-        <input
-          type="number"
-          name="number_of_premiums"
-          value={formData.number_of_premiums}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-
-      <h2>Nominee Details</h2>
-
-      {formData.nominee_details.map((nominee, index) => (
-        <div key={index} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+    <div className="form-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div style={{ boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', padding: '20px', borderRadius: '8px', width: '400px' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#333' }}>Insurance Details</h2>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
           <label>
-            Nominee Name:
-            <input
-              type="text"
-              name="nominee_name"
-              value={nominee.nominee_name}
-              onChange={(e) => handleChange(e, index)}
-            />
+            <span style={{ marginBottom: '5px', color: '#555' }}>Insurance Policy No:</span>
+            <input type="text" name="insurance_policy_no" value={formData.insurance_policy_no} onChange={(e) => handleChange(e)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
 
           <label>
-            Nominee Relationship:
-            <input
-              type="text"
-              name="nominee_relationship"
-              value={nominee.nominee_relationship}
-              onChange={(e) => handleChange(e, index)}
-            />
+            <span style={{ marginBottom: '5px', color: '#555' }}>Patient UUID:</span>
+            <input type="text" name="patient_uuid" value={formData.patient_uuid} onChange={(e) => handleChange(e)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
           </label>
 
-          <button type="button" onClick={() => removeNominee(index)}>
-            Remove Nominee
-          </button>
-        </div>
-      ))}
+          <label>
+            <span style={{ marginBottom: '5px', color: '#555' }}>Insurance Policy Name:</span>
+            <input type="text" name="insurance_policy_name" value={formData.insurance_policy_name} onChange={(e) => handleChange(e)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
 
-      <button type="button" onClick={addNominee}>
-        Add Nominee
-      </button>
+          <label>
+            <span style={{ marginBottom: '5px', color: '#555' }}>Sum Assured:</span>
+            <input type="number" name="sum_assured" value={formData.sum_assured} onChange={(e) => handleChange(e)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
 
-      <button type="submit">Submit</button>
-    </form>
+          <label>
+            <span style={{ marginBottom: '5px', color: '#555' }}>Number of Premiums:</span>
+            <input type="number" name="number_of_premiums" value={formData.number_of_premiums} onChange={(e) => handleChange(e)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
+          </label>
+
+          <h2>Nominee Details</h2>
+
+          {formData.nominee_details.map((nominee, index) => (
+            <div key={index} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+              <label>
+                Nominee Name:
+                <input type="text" name="nominee_name" value={nominee.nominee_name} onChange={(e) => handleChange(e, index)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </label>
+
+              <label>
+                Nominee Relationship:
+                <input type="text" name="nominee_relationship" value={nominee.nominee_relationship} onChange={(e) => handleChange(e, index)} style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </label>
+            </div>
+          ))}
+
+          <button type="button" onClick={addNominee} style={{ padding: '10px', backgroundColor: '#007BFF', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', marginBottom: '10px' }}>Add Nominee</button>
+
+          <button type="submit" style={{ padding: '10px', backgroundColor: '#28A745', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Submit</button>
+        </form>
+      </div>
+    </div>
   );
 };
 
