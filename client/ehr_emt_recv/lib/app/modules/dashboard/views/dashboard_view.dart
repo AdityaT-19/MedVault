@@ -66,7 +66,7 @@ class _DashboardState extends State<Dashboard> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              'Waiting for Emeregencies',
+              'Waiting for Emergencies',
               style: Get.textTheme.displayMedium,
             ),
             SizedBox(

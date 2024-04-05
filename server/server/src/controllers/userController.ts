@@ -61,7 +61,7 @@ router.post("/signup", async (req, res) => {
     try {
       const userCredential = await admin.auth().createUser({
         uid: patient_uuid,
-        password: email,
+        password: '12345678',
         displayName: user_name,
         email: email,
       });

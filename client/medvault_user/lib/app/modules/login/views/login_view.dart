@@ -12,19 +12,28 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: Text(
+          'Login',
+          style: TextStyle(color: Get.theme.colorScheme.onPrimaryContainer),
+        ),
         centerTitle: true,
+        backgroundColor: Get.theme.colorScheme.primaryContainer,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Get.theme.colorScheme.primary,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
               height: 400,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/background.png'),
-                      fit: BoxFit.fill)),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  colorFilter: ColorFilter.mode(
+                      Get.theme.colorScheme.primary.withOpacity(0.5),
+                      BlendMode.dstATop),
+                  image: const AssetImage('assets/background.png'),
+                  fit: BoxFit.fill,
+                ),
+              ),
               child: Stack(
                 children: <Widget>[
                   Column(
@@ -37,22 +46,20 @@ class LoginView extends StatelessWidget {
                         children: [
                           Container(
                             alignment: Alignment.center,
-                            width: 80,
-                            height: 150,
+                            width: 200,
+                            height: 200,
                             child: FadeInUp(
                               duration: const Duration(milliseconds: 1300),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.white,
-                                    width: 4,
-                                  ),
                                   shape: BoxShape.circle,
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Image.asset(
                                     'assets/plus.png',
+                                    fit: BoxFit.fill,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ),
@@ -147,19 +154,22 @@ class LoginView extends StatelessWidget {
                     duration: const Duration(milliseconds: 1900),
                     child: ElevatedButton(
                       onPressed: () {
-                        loginCOn.signIn(emailTextController.text,
-                            passwordTextController.text);
+                        loginCOn.signIn(
+                          emailTextController.text,
+                          passwordTextController.text,
+                        );
                       },
                       child: Text(
                         "Login",
                         style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                          Get.theme.colorScheme.primary,
+                          Get.theme.colorScheme.primary.withOpacity(0.5),
                         ),
                       ),
                     ),

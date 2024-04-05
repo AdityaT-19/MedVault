@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:ehr_emt_recv/URL.dart';
 import 'package:ehr_emt_recv/app/models/emt_form.dart';
 import 'package:flutter/material.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import 'package:get/get.dart';
 
@@ -12,6 +16,35 @@ class EmergencyViewView extends StatefulWidget {
 }
 
 class _EmergencyViewViewState extends State<EmergencyViewView> {
+  late IO.Socket client;
+  @override
+  void initState() {
+    super.initState();
+
+    client = IO.io(
+        '${URL.SOCKET_URL}',
+        IO.OptionBuilder()
+            .setTransports(['websocket'])
+            .disableAutoConnect()
+            .build());
+    debugPrint('connect');
+    client.connect();
+
+    client.on('connect', (_) {
+      print('connected');
+    });
+    client.on('qrscan', (data) {
+      print(data);
+      final json = jsonDecode(data);
+      print(json);
+      final EMTForm emtForm = EMTForm.fromJson(json as Map<String, dynamic>);
+      print(emtForm.patientId);
+      print(emtForm.emtId);
+      Get.back();
+      Get.toNamed('/emergency_view', arguments: emtForm);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
