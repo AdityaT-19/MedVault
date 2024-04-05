@@ -3,6 +3,7 @@ import { TextField, Button, Container, Grid, Typography, InputAdornment } from '
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AccountCircle, Email, Phone, Person, Home, EventNote, AddCircleOutline, Accessibility } from '@mui/icons-material';
+import { v4 as uuidv4 } from 'uuid';
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -64,10 +65,10 @@ const SignUpForm = () => {
       report_name: '',
       completed: false,
       type_of_test: '',
-      date_of_test: '2003-01-01', // Set default date
+      date_of_test: Date('2022-01-01'), // Set default date
       sub_test_reports: [{
         path: '',
-        added_date: '2003-01-01', // Set default date
+        added_date: Date('2020-01-01'), // Set default date
       }],
       doctor_id: '',
       technician_id: '',
@@ -104,7 +105,108 @@ const SignUpForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          "profile_image": "https://example.com/profile.jpg",
+          "user_name": formData.user_name,
+          "age":formData.age,
+          "sex": formData.sex,
+          "phone_no": formData.phone_no,
+          "email": formData.email,
+          "bloodGroup": formData.bloodGroup,
+          "emergency_details": [
+            {
+              "emergency_contact_name": "Austa Laura",
+              "emergency_phone_no": "123456789",
+            }
+          ],
+          "address": formData.address,
+          "aadhar_no":formData.aadhar_no,
+          "bpl_no": formData.bpl_no,
+          "health_scheme_data": [
+            {
+              "scheme_name": "National Health Insurance Scheme",
+              "id": "NHIS12345"
+            }
+          ],
+          "insurance_policy_no": formData.insurance_policy_no,
+          "medical_diseases": [
+            {
+              "disease_name": "Diabetes",
+              "severity": "Mild"
+            }
+          ],
+          "past_history": [
+            {
+              "disease_name": "Asthma",
+              "doctor_name": "Dr. Smith"
+            }
+          ],
+          "treatments_history": [
+            {
+              "treatments": "Insulin therapy",
+              "no_of_days": 30
+            }
+          ],
+          "allergies": [
+            {
+              "allergy_name": "Peanuts",
+              "severity": "Severe"
+            }
+          ],
+          "prescriptions": [
+            {
+              "prescription_id": uuidv4().toString(),
+              "health_issue": "High blood sugar",
+              "suspected_disease": [
+                {
+                  "disease_name": "Diabetes",
+                  "severity": "Moderate"
+                }
+              ],
+              "treatement_required": [
+                {
+                  "treatments": "Diet and exercise",
+                  "no_of_days": 90
+                }
+              ],
+              "follow_up": "In 3 months",
+              "medicines": [
+                {
+                  "name": "Metformin",
+                  "dosage": "500mg twice daily"
+                }
+              ],
+              "doctor_id": "DR123456"
+            }
+          ],
+          "medicines": [
+            {
+              "name": "Aspirin",
+              "dosage": "81mg daily"
+            },
+            {
+                  "name": "Metformin",
+                  "dosage": "500mg twice daily"
+            }
+          ],
+          "lab_reports": [
+            {
+              "report_id": uuidv4().toString(),
+              "report_name": "Blood test",
+              "completed": true,
+              "type_of_test": "CBC",
+              "date_of_test": "2023-11-19",
+              "sub_test_reports": [
+                {
+                  "path": "https://example.com/reports/cbc.pdf",
+                  "added_date": "2023-11-19"
+                }
+              ],
+              "doctor_id": "DR123456",
+              "techinican_id": "TECH12345"
+            }
+          ]
+        }),
       });
       console.log(response.status);
       if (response.ok) {
